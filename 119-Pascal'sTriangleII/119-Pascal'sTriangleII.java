@@ -1,5 +1,23 @@
 class Solution {
     public List<Integer> getRow(int rowIndex) {
+        List<Integer> prevRow = new ArrayList<>();
+        prevRow.add(1);
+
+        for (int i = 1; i <= rowIndex; i++) {
+            List<Integer> row = new ArrayList<>();
+            row.add(1);
+
+            for(int j = 1; j < i; j++) {
+                row.add(prevRow.get(j-1) + prevRow.get(j));
+            }
+
+            row.add(1);
+            prevRow = row;
+        }
+        return prevRow;
+    }
+}/*class Solution {
+    public List<Integer> getRow(int rowIndex) {
         return generate(rowIndex+1).get(rowIndex);
     }
 
@@ -28,4 +46,4 @@ class Solution {
         }
         return triangle;
     }
-}
+}*/
