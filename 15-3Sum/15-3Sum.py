@@ -1,11 +1,12 @@
+#space,time: O(1), O(n^2) *excluding result space
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         result=[]
         
-        #sort array
+        #sort array. O(1),O(nlogn)
         nums.sort()
 
-        #get num1:
+        #get num1 O(1), O(n^2)
         for i in range(len(nums)):
             #skip iteration if it's the same number
             if nums[i] == nums[i-1] and i>0:
@@ -14,7 +15,7 @@ class Solution:
             left = i+1
             right = len(nums)-1
             target = -nums[i]
-
+            
             while left < right:
                 cur_sum = nums[left] + nums[right]
                 if cur_sum == target:
