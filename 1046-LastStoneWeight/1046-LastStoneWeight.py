@@ -1,9 +1,7 @@
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         '''
-        2 7 4 1 8 1
-        
-        1 1 
+        use heap: the problem requires max heap but the default is a min heap
         '''
         stones = [-s for s in stones]
         heapq.heapify(stones)
