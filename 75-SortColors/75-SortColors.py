@@ -17,15 +17,12 @@ class Solution:
         #count.keys=[0, 1, 2]
         #nums=[]
 
-        #loop through count.keys:
+        #loop through keys in count:
         #loop print index i times in count
 
         numsIndex=0
         while numsIndex<len(nums):
-            # for key in count.keys():
-            #     for val in count[count.keys]
-
             for key in count:
-                for val in range(count[key]):
+                for i in range(count[key]):
                     nums[numsIndex]=key
                     numsIndex+=1
