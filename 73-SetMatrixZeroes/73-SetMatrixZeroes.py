@@ -1,4 +1,4 @@
-# Last updated: 5/14/2025, 8:19:02 PM
+# Last updated: 5/15/2025, 9:56:40 AM
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
@@ -14,21 +14,51 @@ class Solution:
         O(max(m,n)) time:      
         """
         #O(mn) time, O(m+n) space
-        col, row = [], []
+        # col, row = [], []
+        # for m in range(len(matrix)):
+        #     for n in range(len(matrix[0])):
+        #         if matrix[m][n]==0:
+        #             row.append(m)
+        #             col.append(n) 
+
+        # for m in row:
+        #     for i in range(len(matrix[0])):
+        #         matrix[m][i] = 0
+
+        # for n in col:
+        #     for i in range(len(matrix)):
+        #         matrix[i][n] = 0
+        
+        #O(1) space:
+        
+        col_0, row_0 = 0, 0
         for m in range(len(matrix)):
             for n in range(len(matrix[0])):
-                if matrix[m][n]==0:
-                    row.append(m)
-                    col.append(n) 
+                if matrix[m][n] == 0:
+                    if m == 0:
+                        row_0 = 1
+                    if n == 0:
+                        col_0 = 1    
+                    matrix[0][n] = 0
+                    matrix[m][0] = 0
 
-        for m in row:
-            for i in range(len(matrix[0])):
-                matrix[m][i] = 0
+        for m in range(1, len(matrix)):
+            if matrix[m][0] == 0:
+                for n in range(1, len(matrix[0])):
+                    matrix[m][n] = 0
 
-        for n in col:
-            for i in range(len(matrix)):
-                matrix[i][n] = 0
+        for n in range(1, len(matrix[0])):
+            if matrix[0][n] == 0:
+                for m in range(1, len(matrix)):
+                    matrix[m][n] = 0
         
+        if row_0 == 1:
+            for n in range(len(matrix[0])):
+                matrix[0][n] = 0
+                
+        if col_0 == 1:
+            for m in range(len(matrix)):
+                matrix[m][0] = 0
         return
 
         
